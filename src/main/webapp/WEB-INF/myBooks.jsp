@@ -40,17 +40,14 @@
 		<h2>${noResults}</h2>
 		<c:if test = "${searchBook != null}">
 			<div class="row mt-3 justify-content-center">
-				<div class="col d-flex justify-content-end">
+				<div class="col-4 d-flex justify-content-end">
 					<img src="${searchBook.cover_md}" alt="" />
 				</div>
 				
-				<div class="col">
+				<div class="col-8">
 					<h2 class="text-capitalize">${searchBook.title}</h2>
-					<p>Author/s
+					<p>Author(s):
 						<c:forEach items="${searchBook.searchAuthors}" var="author">
-							<a href="${author.url}">${author.name}</a>, 
-						</c:forEach>
-						<c:forEach items="${searchBook.authors}" var="author">
 							<a href="${author.url}">${author.name}</a>, 
 						</c:forEach>
 					</p>
@@ -82,14 +79,27 @@
 									}
 		 							rating --;
 		 						}%>
- 								${bookRating}/5
+ 								${bookRating}/5 (From ${numberOfRatings} Ratings)
  							</c:otherwise>
  						</c:choose>
       				</p>
-      				<p> 
-      					${book.usersBooks.size()}
-      						
+      				<p>
+      					<c:choose>
+      					<c:when test="${searchBook.usersBooks.size() != null}">
+      						On ${searchBook.usersBooks.size()} user(s) list.
+      				<p>
+      					Owned by: ${bookOwners.size()}
       				</p>
+      				<p>      				
+      					${currentlyReading.size()} are reading, ${completedReading.size()} have finished.
+      				</p>
+      					</c:when>
+      					<c:otherwise>
+      						No users have added this book
+      					</c:otherwise>
+      					</c:choose>      						
+      				</p>
+      				
 				</div>
 				<div class="row mt-3 text-center">
 					<c:choose>

@@ -74,7 +74,11 @@ public class BookController {
 						  System.out.println("Controller - book exists in DB");
 						  Book existingBook = bService.findByIsbn(searchBook.getIsbn10(), searchBook.getIsbn13());
 						  User loggedUser = uService.findUserById((Long) session.getAttribute("loggedInUser"));
+						  viewModel.addAttribute("bookOwners", uBookService.findByBookAndOwned(existingBook, true));
 						  viewModel.addAttribute("bookRating", uBookService.totalRatingForBook(existingBook));
+						  viewModel.addAttribute("numberOfRatings", uBookService.numberOfRatings(existingBook));
+						  viewModel.addAttribute("currentlyReading", uBookService.currentlyReading(existingBook));
+						  viewModel.addAttribute("completedReading", uBookService.completedReading(existingBook));
 						  if(uBookService.containsBook(loggedUser, existingBook)) {
 							  System.out.println("Book already on list");
 							  viewModel.addAttribute("bookOnList", "true");
@@ -149,6 +153,10 @@ public class BookController {
 		viewModel.addAttribute("bookRating", uBookService.totalRatingForBook(book));
 		viewModel.addAttribute("book", book);
 		viewModel.addAttribute("userBook", uBookService.findByUserAndBook(loggedUser ,book));
+		viewModel.addAttribute("bookOwners", uBookService.findByBookAndOwned(book, true));
+		viewModel.addAttribute("numberOfRatings", uBookService.numberOfRatings(book));
+		viewModel.addAttribute("currentlyReading", uBookService.currentlyReading(book));
+		viewModel.addAttribute("completedReading", uBookService.completedReading(book));
 		if(uBookService.containsBook(loggedUser, book)) {
 			  viewModel.addAttribute("bookOnList", "true");
 			 }

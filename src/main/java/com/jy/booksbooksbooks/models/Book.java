@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -80,7 +81,7 @@ public class Book {
     private Date createdAt;
     private Date updatedAt;
        
-    @OneToMany(mappedBy="book", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<UserBook> usersBooks;
         

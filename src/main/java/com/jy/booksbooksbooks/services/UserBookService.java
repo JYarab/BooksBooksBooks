@@ -1,5 +1,6 @@
 package com.jy.booksbooksbooks.services;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -80,6 +81,32 @@ public class UserBookService {
 		
 	return ((float) totalOfRatings) / numOfRatings;
 	}
+	
+	public Integer numberOfRatings(Book book) {
+		Integer numOfRatings = 0;
+		for(UserBook ub : ubRepo.findAllByBook(book)) {
+			if(ub.getRating() != null) {
+				numOfRatings ++;
+			}
+		}
+		return numOfRatings;
+	}
+
+	public List<UserBook> findByBookAndOwned(Book book, boolean b) {
+		List<UserBook> ub = ubRepo.findByBookAndOwned(book, b);
+		return ub;
+	}
+
+	public List<UserBook> currentlyReading(Book book) {
+		List<UserBook> ub = ubRepo.findByBookWhereCurrentPageGreaterThanZero(book);
+		return ub;
+	}
+
+	public List<UserBook> completedReading(Book book) {
+		List<UserBook> ub = ubRepo.findByBookAndCompleted(book, true);
+		return ub;
+	}
+
 
 	
 }

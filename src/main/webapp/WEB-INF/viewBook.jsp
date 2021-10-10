@@ -28,12 +28,9 @@
 					<img src="${book.cover_md}" alt="" />
 				</div>
 				
-				<div class="col-6">
+				<div class="col-8">
 					<h2 class="text-capitalize">${book.title}</h2>
-					<p>Author/s
-						<c:forEach items="${book.authors}" var="author">
-							<a href="${author.url}">${author.name}</a>, 
-						</c:forEach>
+					<p>Author(s):
 						<c:forEach items="${book.authors}" var="author">
 							<a href="${author.url}">${author.name}</a>, 
 						</c:forEach>
@@ -50,7 +47,7 @@
 					</p>
 					<p>User Rating:
  						<c:choose>
- 							<c:when test="${bookRating == 'NaN'}">
+ 							<c:when test="${bookRating == 'NaN' || bookRating == null}">
  								None
  							</c:when>
  							<c:otherwise>
@@ -66,13 +63,25 @@
 									}
 		 							rating --;
 		 						}%>
- 								${bookRating}/5
+ 								${bookRating}/5 (From ${numberOfRatings} Ratings)
  							</c:otherwise>
  						</c:choose>
       				</p>
       				<p> 
-      					${book.usersBooks.size()}
-      						
+      					<c:choose>
+      					<c:when test="${book.usersBooks.size() != null}">
+      						On ${book.usersBooks.size()} user(s) list.
+      					</c:when>
+      					<c:otherwise>
+      						No users have this book
+      					</c:otherwise>
+      					</c:choose>        						
+      				</p>
+      				<p>
+      					Owned by: ${bookOwners.size()}
+      				</p>
+      				<p>      				
+      					${currentlyReading.size()} are reading, ${completedReading.size()} have finished.
       				</p>
 				</div>
 				<div class="row mt-3 text-center">
