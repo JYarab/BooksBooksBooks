@@ -1,0 +1,9 @@
+.own-icon{
+	width: 25px;
+}
+
+.reviews-box {
+  height:300px;
+  overflow-y: scroll;
+}
+

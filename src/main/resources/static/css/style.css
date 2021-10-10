@@ -1,0 +1,54 @@
+html,body{
+background-image: url('https://getwallpapers.com/wallpaper/full/2/c/a/165944.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+  background-position: center;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+color: white;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(50,0,0,0.8) !important;
+}
+
+#quote{
+	 font-style: italic;
+}
+
+.book_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #687aa8;
+}
+
+.card-header h3{
+color: white;
+}
+
+.book_icon{
+position: absolute;
+right: 170px;
+top: -45px;
+}
+
+.input-icon{
+width: 50px;
+background-color: #687aa8;
+color: black;
+border:0 !important;
+}
+
+.btn-login{
+	background-color: #687aa8;
+	color: white;
+}
+
