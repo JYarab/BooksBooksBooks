@@ -105,6 +105,10 @@ public class BookController {
 	 	public String addBook(@Valid @ModelAttribute("userBook") UserBook userBook, BindingResult result, HttpSession session){
 				
 		 Book book = (Book) session.getAttribute("searchBook");
+		 //if user hits back after adding a book, book will be null, redirect to myBooks page
+		 if(book == null) {
+			 return "redirect:/myBooks";
+		 }
 		 Boolean bookInDB = false;
 		 Book existingBook = bService.findByIsbn(book.getIsbn10(), book.getIsbn13());
 		 
@@ -116,9 +120,12 @@ public class BookController {
 		 		bookInDB = true;
 		 		userBook.setBook(existingBook);
 		 	}
+		 //Check if user already has book on list, save if it is not
+		 if(!uBookService.containsBook(userBook.getUser(), existingBook));{
+			//Create new user and book relationship	
+			 uBookService.AddBookToList(userBook);
+		 }
 		 
-		 //Create new user and book relationship	
-		 uBookService.AddBookToList(userBook);
 		 
 		 //If new book, check authors in search author list, create if new
 		 if(!bookInDB) {

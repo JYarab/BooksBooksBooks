@@ -16,60 +16,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="d-flex justify-content-center h-100">
-			<div class="card">
-				<div class="card-header">
-					<h3>Profile</h3>
-					<div class="d-flex justify-content-center book_icon">
-						<span><i class="fas fa-book-reader"></i></span>
-					</div>
-				</div>
-				
-				<div class="card-body">
-					<form:form method="POST" action="/profile/update" modelAttribute="user">
-						<form:hidden path="id" value="${user.id}"/>
-						<div class="input-errors">
-							<form:errors class="text-danger" path="name"/>
-						</div>
-						<div class="input-group mb-3">						
-							<span class="input-group-text input-icon justify-content-center"><i class="fas fa-address-card"></i></span>
-							<form:input class="form-control" path="name" value="${user.name}"/>						
-						</div>
-						
-						<div class="input-errors">
-							<form:errors class="text-danger" path="email"/>
-						</div>
-						<div class="input-group mb-3">						
-							<span class="input-group-text input-icon justify-content-center"><i class="fas fa-envelope"></i></span>
-							<form:input class="form-control" type="email" path="email" value="${user.email}"/>						
-						</div>
-	
-						<div class="text-center">
-				        	<button type="submit" class="btn btn-login mb-3">Update</button>
-				        </div>
-					</form:form>				
-				</div>
-	
-				<div class="card-footer">
-					<div class="d-flex justify-content-center">
-<%-- 						<form:form>
-							<div class="input-errors">
-								<form:errors class="text-danger" path="password"/>
-							</div>
-							<div class="input-group mb-3">						
-								<span class="input-group-text input-icon justify-content-center"><i class="fas fa-lock"></i></span>
-								<form:password class="form-control" path="password" placeholder="Password..."/>						
-							</div>
-							
-							<div class="input-group mb-3">						
-								<span class="input-group-text input-icon justify-content-center"><i class="fas fa-lock"></i></span>
-								<form:password class="form-control" path="passwordConfirmation" placeholder="Confirm Password..."/>						
-							</div>
-						</form:form> --%>
-					</div>
-				</div>
-			</div>	
-		</div>	
+		
 	</div>
 </body>
 </html>
