@@ -10,6 +10,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/665249abe1.js" crossorigin="anonymous"></script>
 <link rel="shortcut icon" href="https://img.icons8.com/external-itim2101-lineal-color-itim2101/64/000000/external-book-back-to-school-itim2101-lineal-color-itim2101.png" />
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
 <!-- local stylesheet -->
 <link href="/css/book-style.css" type="text/css" rel="stylesheet">
 <title>My Books</title>
@@ -145,8 +149,10 @@
 	  		</div>
   		</c:if>
   		
-		<div class="row">
-<%-- 			<table class="table">
+  		<button class="btn btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse, .collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle Cards or Table</button>
+  		
+		<div class="row ">
+			<table class="table collapse multi-collapse" id="bookTable">
 				<thead>
 				    <tr>
 				      <th scope="col">Cover</th>
@@ -211,13 +217,13 @@
 				    </tr>
 				    </c:forEach>
 			  </tbody>
-			</table> --%>
-				<div class="row justify-content-around">
+			</table>
+				<div class="row justify-content-around collapse show" id="bookCards">
 				<c:forEach items="${usersBooks}" var="usersBook">
 					<div class="card mb-2" style="max-width: 425px;">
 					  <div class="row g-0">
 					    <div class="col-md-4 align-self-center">
-					      <img src="${usersBook.book.cover_md}" class="img-fluid rounded-start" alt="...">
+					      <img src="${usersBook.book.cover_md}" onerror="if (this.src != '/imgs/no_cover.jpg') this.src = '/imgs/no_cover.jpg';" class="img-fluid rounded" alt="...">
 					    </div>
 					    <div class="col-md-8">
 					      <div class="card-body">
