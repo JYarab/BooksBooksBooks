@@ -12,7 +12,7 @@
 <script src="https://kit.fontawesome.com/665249abe1.js" crossorigin="anonymous"></script>
 <link rel="shortcut icon" href="https://img.icons8.com/external-itim2101-lineal-color-itim2101/64/000000/external-book-back-to-school-itim2101-lineal-color-itim2101.png" />
 <meta charset="ISO-8859-1">
-<title>${user.name}'s Profile </title>
+<title>${user.displayName}'s Profile </title>
 </head>
 <body>
 	<div class="container">
