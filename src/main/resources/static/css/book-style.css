@@ -17,6 +17,10 @@ html, body{
 }
 
 .container{
-	background-color: rgba(240,240,240,0.85);
+	background-color: rgba(240,240,240,0.75);
 	min-height: 100vh;
+}
+
+.ol-image{
+	width: 100px;
 }

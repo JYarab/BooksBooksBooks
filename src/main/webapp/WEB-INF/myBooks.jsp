@@ -32,7 +32,10 @@
 				<form action="/myBooks">
 	  				<div class="mb-3">
 	    				<label for="isbn" class="form-label">Search For Books by ISBN</label>
-	    				<input type="text" class="form-control" id="isbn" name="isbn">
+	    				
+	    				<div class="mb-2"><a href="https://openlibrary.org/" target="_blank"><img src="https://openlibrary.org/static/images/openlibrary-logo-tighter.svg" width = "100" alt="" /></a></div>
+	    				
+	    				<input type="text" class="form-control" id="isbn" name="isbn" placeholder="ISBN 10 or 13">
 	    				<input type="hidden" name="search"/>
 	  				</div>
 	  				<button type="submit" class="btn btn-primary">Submit</button>
@@ -45,7 +48,7 @@
 		<c:if test = "${searchBook != null}">
 			<div class="row mt-3 justify-content-center">
 				<div class="col-4 d-flex justify-content-end">
-					<img src="${searchBook.cover_md}" alt="" />
+					<img src="${searchBook.cover_md}"  onerror="if (this.src != '/imgs/no_cover.jpg') this.src = '/imgs/no_cover.jpg';" alt="" />
 				</div>
 				
 				<div class="col-8">
@@ -167,7 +170,7 @@
 			  <tbody>
 				  <c:forEach items="${usersBooks}" var="usersBook">
 				    <tr>
-				      <td><img src="${usersBook.book.cover_sm}" alt="" /></td>
+				      <td><img src="${usersBook.book.cover_sm}" onerror="if (this.src != '/imgs/no_cover_sm.jpg') this.src = '/imgs/no_cover_sm.jpg';"  alt="" /></td>
 				      <td class="text-capitalize"><a href="/myBooks/${usersBook.book.id}">${usersBook.book.title}</a></td>
 				      <td>
 				      	<c:forEach items="${usersBook.book.authors}" var="author">
@@ -220,7 +223,7 @@
 			</table>
 				<div class="row justify-content-around collapse show" id="bookCards">
 				<c:forEach items="${usersBooks}" var="usersBook">
-					<div class="card mb-2" style="max-width: 425px;">
+					<div class="card mb-2 shadow" style="max-width: 425px;">
 					  <div class="row g-0">
 					    <div class="col-md-4 align-self-center">
 					      <img src="${usersBook.book.cover_md}" onerror="if (this.src != '/imgs/no_cover.jpg') this.src = '/imgs/no_cover.jpg';" class="img-fluid rounded" alt="...">
